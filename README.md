@@ -84,3 +84,102 @@ jobs:
           where metrics are collected for long-term reporting.'
 
 ```
+
+## Output
+
+Example output of an individual repository:
+
+```json
+{
+  "nameWithOwner": "my-org/my-repo",
+  "pushedAt": "2022-10-09T13:49:38Z",
+  "defaultBranchRef": {
+    "name": "main",
+    "target": {
+      "id": "MDY6Q29tbWl0MTcwNTphNmNkYWVmYjA4YjUzMDAzZjYzZTc3NGY5MTA4YWY5ODE5YWZlZmNh",
+      "authoredDate": "2022-10-09T13:49:38Z",
+      "author": {
+        "name": "GHE Admin",
+        "date": "2022-10-09T08:49:38-05:00"
+      }
+    }
+  },
+  "languages": {
+    "nodes": [
+      {
+        "name": "JavaScript"
+      }
+    ],
+    "edges": [
+      {
+        "size": 338
+      }
+    ]
+  },
+  "issues": {
+    "nodes": [
+      {
+        "number": 2,
+        "author": {
+          "login": "ghe-admin"
+        },
+        "lastEditedAt": null,
+        "createdAt": "2022-10-09T13:42:55Z",
+        "closedAt": null
+      },
+      {
+        "number": 3,
+        "author": {
+          "login": "ghe-admin"
+        },
+        "lastEditedAt": null,
+        "createdAt": "2022-10-09T13:43:02Z",
+        "closedAt": null
+      },
+      {
+        "number": 4,
+        "author": {
+          "login": "ghe-admin"
+        },
+        "lastEditedAt": null,
+        "createdAt": "2022-10-09T13:45:38Z",
+        "closedAt": "2022-10-09T13:45:45Z"
+      }
+    ]
+  },
+  "pullRequests": {
+    "nodes": [
+      {
+        "number": 1,
+        "author": {
+          "login": "ghe-admin"
+        },
+        "lastEditedAt": null,
+        "createdAt": "2022-10-09T13:42:44Z",
+        "mergedAt": "2022-10-09T13:48:04Z",
+        "closedAt": "2022-10-09T13:48:04Z"
+      },
+      {
+        "number": 5,
+        "author": {
+          "login": "ghe-admin"
+        },
+        "lastEditedAt": null,
+        "createdAt": "2022-10-09T13:46:00Z",
+        "mergedAt": "2022-10-09T13:46:06Z",
+        "closedAt": "2022-10-09T13:46:06Z"
+      },
+      {
+        "number": 6,
+        "author": {
+          "login": "ghe-admin"
+        },
+        "lastEditedAt": null,
+        "createdAt": "2022-10-09T13:47:19Z",
+        "mergedAt": "2022-10-09T13:49:38Z",
+        "closedAt": "2022-10-09T13:49:38Z"
+      }
+    ]
+  }
+}
+```

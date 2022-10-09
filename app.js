@@ -122,7 +122,9 @@ try {
         if (['github-enterprise', 'actions', 'github'].includes(org)) {
           console.log(`skipping ${org}`);
         } else {
-          await getOrgMetricsData(org).then((res) => {
+          // Process each org individually to reduce concurrent API calls
+          // await getOrgMetricsData(org).then((res) => {
+          getOrgMetricsData(org).then((res) => {
             res.organization.repositories.nodes.forEach((repo) => {
               let outputPath = './data/orgmetrics';
 
