@@ -4,6 +4,15 @@ Reference example which scans a GitHub Enterprise Server instance to collect Top
 
 This example repository uses **Node.js** to communicate with the GitHub GraphQL API using [Octokit](https://github.com/octokit).
 
+- [GitHub Metrics TopX](#github-metrics-topx)
+  - [Requirements](#requirements)
+  - [Usage](#usage)
+    - [Usage - Local Exec](#usage---local-exec)
+    - [Usage - Workflow Dispatch](#usage---workflow-dispatch)
+      - [Components - Workflow Dispatch](#components---workflow-dispatch)
+      - [Workflow Configuration - Workflow Dispatch](#workflow-configuration---workflow-dispatch)
+  - [Output](#output)
+
 ## Requirements
 
 - **Node.js**: Tested with `v16.14.2` of **Node.js** with **npm** version `8.6.0`.  Refer to the [Node.js Docs Site](https://nodejs.org/en/) for installation details.
