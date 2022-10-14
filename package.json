@@ -1,6 +1,6 @@
 {
   "name": "github-metrics-topx",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "GitHub Action for collecting TopX metrics",
   "main": "app.js",
   "scripts": {
@@ -9,12 +9,11 @@
   "author": "Collin McNeese",
   "license": "ISC",
   "dependencies": {
-    "@octokit/core": "^4.0.5",
+    "@octokit/core": "^4.1.0",
     "@octokit/plugin-paginate-graphql": "^2.0.1",
-    "@octokit/rest": "^19.0.4",
     "async": "^3.2.4",
     "dotenv": "^16.0.3",
-    "octokit": "^2.0.7"
+    "octokit": "^2.0.9"
   },
   "devDependencies": {
     "cspell": "^6.12.0",
