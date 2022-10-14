@@ -102,7 +102,7 @@ async function getOrgMetricsData(owner) {
   return res;
 }
 
-function jsonFileMerge(outfile, sourcepath) {
+async function jsonFileMerge(outfile, sourcepath) {
   fs.writeFileSync(outfile, '[');
   fs.readdirSync(sourcepath).forEach((file, index, arr) => {
     fs.writeFileSync(outfile, fs.readFileSync(`${sourcepath}/${file}`), { flag: 'a' });
@@ -114,40 +114,40 @@ function jsonFileMerge(outfile, sourcepath) {
   fs.writeFileSync(outfile, ']', { flag: 'a' });
 }
 
-try {
-  getOrgList().then((orgs) => {
-    async.eachSeries(orgs, async(org, next, err) => {
-      console.log(`Processing ${org}`);
-      try {
-        if (['github-enterprise', 'actions', 'github'].includes(org)) {
-          console.log(`skipping ${org}`);
-        } else {
-          // Process each org individually to reduce concurrent API calls
-          // await getOrgMetricsData(org).then((res) => {
-          getOrgMetricsData(org).then((res) => {
-            res.organization.repositories.nodes.forEach((repo) => {
-              let outputPath = './data/orgmetrics';
-
-              if (!fs.existsSync(outputPath)){
-                fs.mkdirSync(outputPath, { recursive: true });
-              }
-
-              let orgName = repo.nameWithOwner.split('/')[0];
-              let repoName = repo.nameWithOwner.split('/')[1];
-              let outFile = `${outputPath}/${orgName}_${repoName}.json`;
-
-              console.log(`Writing ${outFile}`);
-              fs.writeFileSync(outFile, JSON.stringify(repo, null, 2));
-            });
-          }).then(() => {
-            jsonFileMerge('./orgmetrics.json', './data/orgmetrics');
-          });
-        }
-      } catch (err) {
-        console.log(`Error processing ${org}: ${err}`);
-      }
-    });
+async function getResults() {
+  const orgs = await getOrgList();
+  async.eachLimit(orgs, 100, async(org) => {
+    if (['github-enterprise', 'actions', 'github'].includes(org)) {
+      console.log(`skipping ${org}`);
+    } else {
+      const orgData = await getOrgMetricsData(org);
+      await processResults(orgData);
+    }
+  }).then(() => {
+    jsonFileMerge('./data/orgmetrics.json', './data/orgmetrics');
   });
-} catch (e) {
-  console.log(`Error fetching org list: ${e}`);
 }
+
+async function processResults(res) {
+  await res.organization.repositories.nodes.forEach((repo, repoIndex, repoArray) => {
+    console.log(`[${repoArray.length + 1 - (repoArray.length - repoIndex)}/${repoArray.length}]: Processing ${repo.nameWithOwner}`);
+    let outputPath = './data/orgmetrics';
+
+    if (!fs.existsSync(outputPath)){
+      fs.mkdirSync(outputPath, { recursive: true });
+    }
+
+    let orgName = repo.nameWithOwner.split('/')[0];
+    let repoName = repo.nameWithOwner.split('/')[1];
+    let outFile = `${outputPath}/${orgName}_${repoName}.json`;
+
+    console.log(`Writing ${outFile}`);
+    fs.writeFileSync(outFile, JSON.stringify(repo, null, 2));
+  });
+}
+
+async function main() {
+  await getResults();
+}
+
+main();

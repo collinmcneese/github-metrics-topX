@@ -1,5 +1,7 @@
 # GitHub Metrics TopX
 
+[![CI](https://github.com/collinmcneese/github-metrics-topX/actions/workflows/ci.yml/badge.svg)](https://github.com/collinmcneese/github-metrics-topX/actions/workflows/ci.yml)[![CodeQL](https://github.com/collinmcneese/github-metrics-topX/actions/workflows/codeql-analysis.yml/badge.svg)](https://github.com/collinmcneese/github-metrics-topX/actions/workflows/codeql-analysis.yml)
+
 Reference example which scans a GitHub Enterprise Server instance to collect Top X metrics of activity across all organizations and repositories.
 
 This example repository uses **Node.js** to communicate with the GitHub GraphQL API using [Octokit](https://github.com/octokit).

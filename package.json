@@ -1,6 +1,6 @@
 {
   "name": "github-metrics-topx",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "GitHub Action for collecting TopX metrics",
   "main": "app.js",
   "scripts": {
