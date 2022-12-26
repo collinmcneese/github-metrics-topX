@@ -13,7 +13,7 @@
     "@octokit/plugin-paginate-graphql": "^2.0.1",
     "async": "^3.2.4",
     "dotenv": "^16.0.3",
-    "octokit": "^2.0.9"
+    "octokit": "^2.0.10"
   },
   "devDependencies": {
     "cspell": "^6.12.0",
