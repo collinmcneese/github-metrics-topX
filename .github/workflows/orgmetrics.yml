@@ -12,6 +12,8 @@ jobs:
     env:
       GHE_API_TOKEN: ${{ secrets.GHE_API_TOKEN }}
       GHE_HOSTNAME: ${{ secrets.GHE_HOSTNAME }}
+      GHE_METRICS_DEPTH: ${{ vars.GHE_METRICS_DEPTH }}
+      GHE_ORG_LIST: ${{ vars.GHE_ORG_LIST }}
     steps:
       - uses: actions/checkout@v3
       - name: Use Node.js 16.x

@@ -35,11 +35,13 @@ The orgmetrics app can be run from a system which has the [requirements](#requir
 - Create a `.env` file using provided [.env.example](.env.example) with the following variables:
   - `GHE_API_TOKEN`: **required** Used by [app.js](./app.js), Personal Authentication Token used for API calls.
   - `GHE_HOSTNAME`: Used by [app.js](./app.js), Optional FQDN for GitHub Enterprise Server instance for API calls.  Defaults to `api.github.com`.  For a GitHub Enterprise Server(GHES) installation this would be `GHES_INSTANCE.FQDN.domain`.
+  - `GHE_METRICS_DEPTH`: **Integer**, Depth level for metrics -- to collect top 25 metrics then set to `25`.  Default `10`.
+  - `GHE_ORG_LIST`: Optional comma-separated list of orgs to scan.
 - Install npm dependencies:
   `npm install`
 - Execute orgmetrics app:
   `npx node app.js`
-- Results will be saved to individual JSON files under `./data/orgmetrics` local path and combined to `./orgmetrics.json`.
+- Results will be saved to individual JSON files under `./data/orgmetrics` local path and combined to `./data/orgmetrics.json`.
 
 ### Usage - Workflow Dispatch
 
@@ -52,6 +54,8 @@ This example repository can be triggered with a [Workflow Dispatch](https://docs
 - Environment Variables used:
   - `GHE_API_TOKEN`: **required** Used by [app.js](./app.js), Personal Authentication Token used for API calls.
   - `GHE_HOSTNAME`: Used by [app.js](./app.js), Optional FQDN for GitHub Enterprise Server instance for API calls.  Defaults to `api.github.com`.  For a GitHub Enterprise Server(GHES) installation this would be `GHES_INSTANCE.FQDN.domain`.
+  - `GHE_METRICS_DEPTH`: **Integer**, Depth level for metrics -- to collect top 25 metrics then set to `25`.  Default `10`.
+  - `GHE_ORG_LIST`: Optional comma-separated list of orgs to scan.
 - `orgmetrics.json` file will be saved as a workflow artifact.
 
 #### Workflow Configuration - Workflow Dispatch
@@ -73,6 +77,7 @@ jobs:
     env:
       GHE_API_TOKEN: ${{ secrets.GHE_API_TOKEN }}
       GHE_HOSTNAME: ${{ secrets.GHE_HOSTNAME }}
+      GHE_METRICS_DEPTH: ${{ vars.GHE_METRICS_DEPTH }}
     steps:
       - uses: actions/checkout@v3
       - name: Use Node.js 16.x
