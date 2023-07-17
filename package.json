@@ -16,7 +16,7 @@
     "dotenv": "^16.3.1"
   },
   "devDependencies": {
-    "cspell": "^6.31.1",
+    "cspell": "^6.31.2",
     "eslint": "^8.44.0",
     "eslint-config-strongloop": "^2.1.0",
     "generate-license-file": "^2.0.0"
