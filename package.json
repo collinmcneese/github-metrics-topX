@@ -10,7 +10,7 @@
   "author": "Collin McNeese",
   "license": "ISC",
   "dependencies": {
-    "@octokit/core": "^5.0.1",
+    "@octokit/core": "^5.0.2",
     "@octokit/plugin-paginate-graphql": "^4.0.0",
     "async": "^3.2.5",
     "dotenv": "^16.3.1"
