@@ -10,14 +10,14 @@
   "author": "Collin McNeese",
   "license": "ISC",
   "dependencies": {
-    "@octokit/core": "^5.1.0",
+    "@octokit/core": "^6.0.0",
     "@octokit/plugin-paginate-graphql": "^4.0.0",
     "async": "^3.2.5",
-    "dotenv": "^16.4.4"
+    "dotenv": "^16.4.5"
   },
   "devDependencies": {
-    "cspell": "^8.3.2",
-    "eslint": "^8.56.0",
+    "cspell": "^8.4.1",
+    "eslint": "^8.57.0",
     "eslint-config-strongloop": "^2.1.0",
     "generate-license-file": "^3.0.1"
   }
