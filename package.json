@@ -11,13 +11,13 @@
   "license": "ISC",
   "dependencies": {
     "@octokit/core": "^6.1.2",
-    "@octokit/plugin-paginate-graphql": "^5.2.0",
+    "@octokit/plugin-paginate-graphql": "^5.2.2",
     "async": "^3.2.5",
     "dotenv": "^16.4.5"
   },
   "devDependencies": {
-    "cspell": "^8.7.0",
-    "eslint": "^9.1.0",
+    "cspell": "^8.8.1",
+    "eslint": "^9.2.0",
     "eslint-config-strongloop": "^2.1.0",
     "generate-license-file": "^3.4.0"
   }
