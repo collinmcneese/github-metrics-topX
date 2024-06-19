@@ -20,7 +20,7 @@ const octokit = new GQLPaginate({
 
 async function getOrgList() {
   try {
-    let res = await octokit.graphql.paginate(
+    const res = await octokit.graphql.paginate(
       `query paginate($cursor: String) { organizations(first: 100, after: $cursor) {
         pageInfo {
           hasNextPage
@@ -41,8 +41,8 @@ async function getOrgList() {
 
 async function getOrgMetricsData(owner) {
   try {
-    let depth = process.env.GHE_METRICS_DEPTH ? process.env.GHE_METRICS_DEPTH : 10;
-    let res = await octokit.graphql.paginate(
+    const depth = process.env.GHE_METRICS_DEPTH ? process.env.GHE_METRICS_DEPTH : 10;
+    const res = await octokit.graphql.paginate(
       `query paginate($cursor: String) { organization(login: "${owner}") {
         login
         repositories(first: 1, after: $cursor) {
@@ -136,7 +136,7 @@ async function getResults(orgs) {
       if (['github-enterprise', 'actions', 'github'].includes(org)) {
         console.log(`skipping ${org}`);
       } else {
-        let orgData = await getOrgMetricsData(org);
+        const orgData = await getOrgMetricsData(org);
         await processResults(orgData);
       }
     }).then(() => {
@@ -154,15 +154,15 @@ async function processResults(res) {
   try {
     await res.organization.repositories.nodes.forEach((repo, repoIndex, repoArray) => {
       console.log(`[${repoArray.length + 1 - (repoArray.length - repoIndex)}/${repoArray.length}]: Processing ${repo.nameWithOwner}`);
-      let outputPath = './data/orgmetrics';
+      const outputPath = './data/orgmetrics';
 
       if (!fs.existsSync(outputPath)){
         fs.mkdirSync(outputPath, { recursive: true });
       }
 
-      let orgName = repo.nameWithOwner.split('/')[0];
-      let repoName = repo.nameWithOwner.split('/')[1];
-      let outFile = `${outputPath}/${orgName}_${repoName}.json`;
+      const orgName = repo.nameWithOwner.split('/')[0];
+      const repoName = repo.nameWithOwner.split('/')[1];
+      const outFile = `${outputPath}/${orgName}_${repoName}.json`;
 
       console.log(`Writing ${outFile}`);
       fs.writeFileSync(outFile, JSON.stringify(repo, null, 2));
@@ -175,7 +175,7 @@ async function processResults(res) {
 
 async function main() {
   // Use org list from environment variable, if present
-  let orgs = process.env.GHE_ORG_LIST ? process.env.GHE_ORG_LIST.split(',').map((org) => org.trim()) : await getOrgList();
+  const orgs = process.env.GHE_ORG_LIST ? process.env.GHE_ORG_LIST.split(',').map((org) => org.trim()) : await getOrgList();
 
   await getResults(orgs);
 }
