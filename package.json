@@ -4,7 +4,7 @@
   "description": "GitHub Action for collecting TopX metrics",
   "main": "app.js",
   "scripts": {
-    "test": "eslint --ignore-path .eslintignore . ; cspell *.js *.md",
+    "test": "eslint ; cspell *.js *.md",
     "license": "generate-license-file --input package.json --output third-party-licenses.txt --overwrite"
   },
   "author": "Collin McNeese",
@@ -16,9 +16,9 @@
     "dotenv": "^16.4.5"
   },
   "devDependencies": {
+    "@eslint/js": "^9.5.0",
     "cspell": "^8.8.4",
     "eslint": "^9.5.0",
-    "eslint-config-strongloop": "^2.1.0",
     "generate-license-file": "^3.4.0"
   }
 }
