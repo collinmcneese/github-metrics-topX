@@ -17,8 +17,8 @@
   },
   "devDependencies": {
     "@eslint/js": "^9.18.0",
-    "cspell": "^8.17.1",
+    "cspell": "^8.17.2",
     "eslint": "^9.18.0",
-    "generate-license-file": "^3.6.0"
+    "generate-license-file": "^3.7.0"
   }
 }
