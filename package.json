@@ -13,12 +13,12 @@
     "@octokit/core": "^7.0.3",
     "@octokit/plugin-paginate-graphql": "^6.0.0",
     "async": "^3.2.6",
-    "dotenv": "^17.2.1"
+    "dotenv": "^17.2.2"
   },
   "devDependencies": {
-    "@eslint/js": "^9.34.0",
-    "cspell": "^9.2.0",
-    "eslint": "^9.34.0",
-    "generate-license-file": "^4.0.0"
+    "@eslint/js": "^9.35.0",
+    "cspell": "^9.2.1",
+    "eslint": "^9.35.0",
+    "generate-license-file": "^4.1.0"
   }
 }
