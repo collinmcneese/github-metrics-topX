@@ -23,7 +23,7 @@ jobs:
       - name: exec orgmetrics
         run: npx node app.js
       - name: Save orgmetrics.json artifact
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v5
         with:
           name: repometrics
           path: repometrics.json
